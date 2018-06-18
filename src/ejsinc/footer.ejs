@@ -1,0 +1,11 @@
+  <small>&copy; 2018 vividcolors, inc.</small>
+  <script>
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('drawer').classList.add('opened');
+    document.getElementById('menu-button').classList.add('hidden');
+  });
+  document.getElementById('drawer-close-button').addEventListener('click', function () {
+    document.getElementById('drawer').classList.remove('opened');
+    document.getElementById('menu-button').classList.remove('hidden');
+  });
+  </script>

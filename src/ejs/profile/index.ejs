@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+  <%- include('../../ejsinc/head') %>
+  <title>会社紹介 | ビビッドカラーズ</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <%- include('../../ejsinc/header') %>
+  <article>
+    <div class="cover s-profile-cover">
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <div class="title">
+            <h1><span class="en">PROFILE</span> 会社紹介</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section>
+      <div class="columns">
+        <div class="column-la">
+          <img src="/assets/img/now-printing.png" alt="" style="max-width:100%;" />
+        </div>
+        <div class="column-bc">
+          <h2 class="blue-colored">代表者略歴</h2>
+          <p><span class="name"></span> 1976年生まれ千葉育ち。<br />
+          大学在籍時からプログラミングを始め、社会人になってからも一貫してプログラマー。<br />
+          2009年には、独立開業しオンラインゲームを開発・運営。
+          直近では、ECサイトのシステム部門に招聘され当該システムの責任者を6年担当。その間、システムの大規模刷新など様々なプロジェクトを牽引する。<br />
+          2018年、ビビッドカラーズを創業。
+          1児の父。</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <h2 class="blue-colored">会社概要</h2>
+          <dl class="dl-large">
+            <dt>会社名</dt>
+            <dd>ビビッドカラーズ株式会社</dd>
+            <dt>代表者</dt>
+            <dd>代表取締役 <span class="name"></span></dd>
+            <dt>設立</dt>
+            <dd>2018年6月1日</dd>
+            <dt>資本金</dt>
+            <dd>150万円</dd>
+            <dt>事業内容</dt>
+            <dd><ul><li>インターネットサービス</li><li>システムの受託開発</li><li>前各号に付帯関連する一切の事業</li></ul></dd>
+            <dt>住所</dt>
+            <dd>〒261-0023 千葉市美浜区中瀬1-3 幕張テクノガーデンCB棟3F MBP内</dd>
+            <dt>電話番号</dt>
+            <dd>050-5213-2482</dd>
+            <dt>E-MAIL</dt>
+            <dd>info@vividcolors.co.jp</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <h2 class="blue-colored">アクセス</h2>
+          <p>JR京葉線海浜幕張駅 徒歩3分。<br />
+          駅前の幕張テクノガーデンのCB棟3階です。</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3242.0400578085755!2d140.03942426455697!3d35.65138468921709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5Lit54CsMS0zIOW5leW8teODhuOCr-ODjuOCrOODvOODh-ODsw!5e0!3m2!1sja!2sjp!4v1530064058353" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </article>
+  <%- include('../../ejsinc/footer') %>
+  <script>
+  /*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
+if (!String.fromCodePoint) {
+  (function() {
+    var defineProperty = (function() {
+      // IE 8 only supports `Object.defineProperty` on DOM elements
+      try {
+        var object = {};
+        var $defineProperty = Object.defineProperty;
+        var result = $defineProperty(object, object, object) && $defineProperty;
+      } catch(error) {}
+      return result;
+    }());
+    var stringFromCharCode = String.fromCharCode;
+    var floor = Math.floor;
+    var fromCodePoint = function() {
+      var MAX_SIZE = 0x4000;
+      var codeUnits = [];
+      var highSurrogate;
+      var lowSurrogate;
+      var index = -1;
+      var length = arguments.length;
+      if (!length) {
+        return '';
+      }
+      var result = '';
+      while (++index < length) {
+        var codePoint = Number(arguments[index]);
+        if (
+          !isFinite(codePoint) ||       // `NaN`, `+Infinity`, or `-Infinity`
+          codePoint < 0 ||              // not a valid Unicode code point
+          codePoint > 0x10FFFF ||       // not a valid Unicode code point
+          floor(codePoint) != codePoint // not an integer
+        ) {
+          throw RangeError('Invalid code point: ' + codePoint);
+        }
+        if (codePoint <= 0xFFFF) { // BMP code point
+          codeUnits.push(codePoint);
+        } else { // Astral code point; split in surrogate halves
+          // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+          codePoint -= 0x10000;
+          highSurrogate = (codePoint >> 10) + 0xD800;
+          lowSurrogate = (codePoint % 0x400) + 0xDC00;
+          codeUnits.push(highSurrogate, lowSurrogate);
+        }
+        if (index + 1 == length || codeUnits.length > MAX_SIZE) {
+          result += stringFromCharCode.apply(null, codeUnits);
+          codeUnits.length = 0;
+        }
+      }
+      return result;
+    };
+    if (defineProperty) {
+      defineProperty(String, 'fromCodePoint', {
+        'value': fromCodePoint,
+        'configurable': true,
+        'writable': true
+      });
+    } else {
+      String.fromCodePoint = fromCodePoint;
+    }
+  }());
+}
+  function build() {
+    return String.fromCodePoint(0x5C71, 0x7530, 0x54F2, 0x592E);
+  }
+  window.onload = function () {
+    var n = build();
+    var es = document.getElementsByClassName('name');
+    for (var i = es.length - 1; i >= 0; i--) {
+      var e = es[i];
+      e.insertAdjacentHTML('afterbegin', n);
+    }
+  };
+  </script>
+</body>
+</html>

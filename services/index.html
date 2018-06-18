@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.min.css" />
+  <title>サービス | ビビッドカラーズ</title>
+  <meta name="description" content="ビビッドカラーズが提供しているサービスについて。当社は、ファイル送信サービス「flowy」の自社サービスとして運営し、またシステムの受託開発を行っています。" />
+</head>
+<body>
+  
+  <button id="menu-button" class="icon-button menu-button"><i class="material-icons">menu</i></button>
+  <nav id="drawer" class="drawer">
+    <button id="drawer-close-button" class="icon-button drawer-close-button"><i class="material-icons">close</i></button>
+    <div class="menu">
+      <div class="north">
+        <a href="/" class="logo"><img src="/assets/img/vividcolors.svg" alt="vividcolors" /></a>
+      </div>
+      <div class="middle">
+        <a href="/about/">ビジョン</a>
+        <a href="/services/">サービス</a>
+        <a href="/news/">お知らせ</a>
+        <a href="/profile/">会社紹介</a>
+      </div>
+      <div class="south">
+        <a href="/privacy/">プライバシー</a>
+        <a href="mailto:info@vividcolors.co.jp">お問い合わせ</a>
+      </div>
+    </div>
+  </nav>
+  <article>
+    <div class="cover s-services-cover">
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <div class="title">
+            <div class="s-title-inner">
+              <h1><span class="en">SERVICES</span> サービス</h1>
+              <p>ビビッドカラーズの仕事はIT分野においてモノを作ることです。<br />
+              使い心地を大事にし、「気持ちいい」と感じていただけるものを作ります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section>
+      <div class="columns">
+        <div class="column-bc">
+          <h2 class="yellow-colored">ファイル送信サービス「flowy」</h2>
+          <p>自社で開発・運営しているファイル送信サービスです。<br />
+          ビビッドカラーズはこのサービスを運営することを主目的として創立されました。</p>
+          <p>受信者が他のどの手段よりも快適にファイルを受け取れること。それがflowy（フローイ）のゴールです。<br>
+          flowyは、快適なファイル送受信を通して円滑なコミュニケーションを実現します。</p>
+          <p>このサービスは広告掲載とアンケート実施で運営費用をまかなう予定です。</p>
+          <a href="https://flowy.jp/" class="button" target="_blank"><i class="material-icons">navigate_next</i> ファイル送信サービス「flowy」</a>
+        </div>
+        <div class="column-la">
+          <img src="/assets/img/flowy2.png" alt="flowy" style="max-width:100%;" />
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-ab">
+          <h2 class="yellow-colored">システムの受託開発</h2>
+          <p>ビビッドカラーズはWebシステム開発を得意としています。<br />
+          特に、下記のようなご要望をお持ちの場合にはお役に立てるでしょう。</p>
+          <ul class="check">
+            <li>ブラウザ上で複雑なロジックを動かしたい</li>
+            <li>クラウドを使った、メンテナンスコストを意識したシステム構築</li>
+          </ul>
+          <p>設計やコーディングはもちろんのこと、クライアントの側に立ってシステムベンダーと折衝していくような、プロジェクト責任者の経験も豊富です。</p>
+        </div>
+        <div class="column-cr">
+          <img src="/assets/img/business-2082639_1280.jpg" alt="" style="max-width:100%;" />
+        </div>
+      </div>
+    </section>
+  </article>
+    <small>&copy; 2018 vividcolors, inc.</small>
+  <script>
+  document.getElementById('menu-button').addEventListener('click', function () {
+    document.getElementById('drawer').classList.add('opened');
+    document.getElementById('menu-button').classList.add('hidden');
+  });
+  document.getElementById('drawer-close-button').addEventListener('click', function () {
+    document.getElementById('drawer').classList.remove('opened');
+    document.getElementById('menu-button').classList.remove('hidden');
+  });
+  </script>
+</body>
+</html>

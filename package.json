@@ -1,0 +1,29 @@
+{
+  "name": "vc-web",
+  "version": "0.1.0",
+  "main": "index.html",
+  "repository": "https://github.com/vividcolors/vividcolors.github.io.git",
+  "author": "vividcolors, inc.",
+  "license": "none",
+  "private": true,
+  "scripts": {
+    "clean": "yarn run rimraf *.html assets",
+    "cp": "yarn run cpx 'src/**/*.{js,png,jpg,svg,pdf,pm4}' assets ", 
+    "ejs": "yarn run ejs-cli --base-dir src/ejs/ '/**/**.ejs' --out ./", 
+    "css": "yarn run sass && yarn run autoprefixer", 
+    "sass": "yarn run node-sass src/scss/style.scss assets/css/style.css --output-style compressed --source-map assets/css/",
+    "autoprefixer": "yarn run postcss --use autoprefixer -o assets/css/style.min.css assets/css/style.css",
+    "build": "yarn run clean && yarn run ejs && yarn run cp & yarn run css", 
+    "build:prod": "yarn run clean && NODE_ENV=production yarn run ejs && yarn run cp & yarn run css", 
+    "start:dev": "yarn run http-server -p 8088 -a 0.0.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "cpx": "^1.5.0",
+    "ejs-cli": "^2.0.1",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.8.3",
+    "postcss-cli": "^5.0.0",
+    "rimraf": "^2.6.2"
+  }
+}
