@@ -10,6 +10,14 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-6668265-7');
+  function goout(ev) {
+    var url = ev.target.getAttribute("href");
+    gtag('event', 'click', {
+      'event_category': 'outbound',
+      'event_label': url
+    });
+    return true;
+  }
 </script>
 
   <meta charset="UTF-8" />
@@ -38,7 +46,7 @@
       </div>
       <div class="south">
         <a href="/privacy/">プライバシー</a>
-        <a href="mailto:info@vividcolors.co.jp">お問い合わせ</a>
+        <a href="mailto:info@vividcolors.co.jp" onclick="return goout(arguments[0]);">お問い合わせ</a>
       </div>
     </div>
   </nav>
@@ -66,7 +74,7 @@
           <p>受信者が他のどの手段よりも快適にファイルを受け取れること。それがflowy（フローイ）のゴールです。<br>
           flowyは、快適なファイル送受信を通して円滑なコミュニケーションを実現します。</p>
           <p>このサービスは広告掲載とアンケート実施で運営費用をまかなう予定です。</p>
-          <a href="https://flowy.jp/" class="button" target="_blank"><i class="material-icons">navigate_next</i> ファイル送信サービス「flowy」</a>
+          <a href="https://flowy.jp/" class="button" target="_blank" onclick="return goout(arguments[0]);"><i class="material-icons">navigate_next</i> ファイル送信サービス「flowy」</a>
         </div>
         <div class="column-la">
           <img src="/assets/img/flowy2.png" alt="flowy" style="max-width:100%;" />
