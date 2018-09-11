@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+  <%- include('../../ejsinc/head') %>
+  <title>お問い合わせ | ビビッドカラーズ</title>
+</head>
+<body>
+  <%- include('../../ejsinc/header') %>
+  <article>
+    <div class="cover s-contact-cover">
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <div class="title">
+            <div class="s-title-inner">
+              <h1><span class="en">CONTACT</span> お問い合わせ</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section>
+      <div class="columns">
+        <div class="column-l"></div>
+        <div class="column-abc">
+          <p>下記フォームにてお問い合わせください。<br />
+          フォームで不都合がおありの場合は、お手数ですが<a href="mailto:info@vividcolors.co.jp">info@vividcolors.co.jp</a>に直接メールをお送りいただくか、お電話（<a href="tel:05052132482">05052132482</a>）にてご連絡ください。</p>
+          <form id="theForm" method="POST" action="">
+            <div class="field required">
+              <label for="name">お名前</label>
+              <div class="control">
+                <input id="name" name="name" type="text" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="corp">会社名</label>
+              <div class="control">
+                <input id="corp" name="corp" type="text" />
+              </div>
+            </div>
+            <div class="field required">
+              <label for="email">メールアドレス</label>
+              <div class="control">
+                <input id="email" name="email" type="text" />
+              </div>
+            </div>
+            <div class="field required">
+              <label for="tel">電話番号</label>
+              <div class="control">
+                <input id="tel" name="tel" type="text" placeholder="0312345678" />
+              </div>
+            </div>
+            <div class="field required">
+              <label for="kind">お問い合わせ種別</label>
+              <div class="control">
+                <select id="kind" name="kind">
+                  <option value="IT導入サポートについて">IT導入サポートについて</option>
+                  <option value="ファイル送信サービスflowyについて">ファイル送信サービスflowyについて</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+            </div>
+            <div class="field required">
+              <label for="content">お問い合わせ内容</label>
+              <div class="control">
+                <textarea id="content" name="content"></textarea>
+              </div>
+            </div>
+            <div class="form-action">
+              <button type="submit" class="button">お問い合わせ送信</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </article>
+  <%- include('../../ejsinc/footer') %>
+  <div class="spinner hidden" id="spinner"></div>
+  <div class="notification success hidden" id="sendSuccess">お問い合わせを送信しました。担当者より折り返しご連絡いたしますのでお待ちください。<button id="sendSuccess-close-button" class="icon-button notification-close-button"><i class="material-icons">close</i></button></div>
+  <div class="notification failure hidden" id="sendFailure">お問い合わせの送信に失敗しました。このエラーが続く場合は、直接メールにてお問い合わせください。<button id="sendFailure-close-button" class="icon-button notification-close-button"><i class="material-icons">close</i></button></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script>
+  document.getElementById('sendSuccess-close-button').addEventListener('click', function () {
+    document.getElementById('sendSuccess').classList.add('hidden');
+  });
+  document.getElementById('sendFailure-close-button').addEventListener('click', function () {
+    document.getElementById('sendFailure').classList.add('hidden');
+  });
+    $(document).ready(function () {
+      $.validator.methods.email = function( value, element ) {
+        return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( value );
+      }
+      $.validator.methods.tel = function (value, element) {
+        return this.optional(element) || /^[0-9-]{10,13}$/.test(value);
+      }
+      $('#theForm').validate({
+        submitHandler: function (form) {
+          $('#spinner').removeClass('hidden');
+          var data = {
+            name: document.getElementById('name').value, 
+            corp: document.getElementById('corp').value, 
+            email: document.getElementById('email').value, 
+            tel: document.getElementById('tel').value, 
+            kind: document.getElementById('kind').value, 
+            content: document.getElementById('content').value
+          };
+          $.ajax({
+            data: data, 
+            url: "https://us-central1-coporate-functions.cloudfunctions.net/postMail", 
+            method: "POST", 
+            contentType: "application/json", 
+            success: function () {
+              $('#spinner').addClass('hidden');
+              $('#sendSuccess').removeClass('hidden');
+            }, 
+            error: function () {
+              $('#spinner').addClass('hidden');
+              $('#sendFailure').removeClass('hidden');
+            }
+          });
+        }, 
+        rules: {
+          name: "required", 
+          email: {required:true, email:true}, 
+          tel: {required:true, tel:true}, 
+          kind: "required", 
+          content: "required"
+        }, 
+        messages: {
+          name: "お名前を入力してください。", 
+          email: {required:"メールアドレスを入力してください。", email:"メールアドレスを半角文字で正しく入力してください。"}, 
+          tel: {required:"電話番号を入力してください。", tel:"電話番号を半角数字で正しく入力してください。"}, 
+          kind: "お問い合わせ種別を選択してください。", 
+          content: "お問い合わせ内容を入力してください。"
+        }
+      })
+    })
+  </script>
+</body>
+</html>

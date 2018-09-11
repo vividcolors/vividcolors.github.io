@@ -6,6 +6,8 @@
 $color-black: #000000;
 $color-white: #ffffff;
 $color-gray: #666666;
+$color-border: #B0B0B0;
+$color-border-poor: #FF9999;
 
 $alpha-hover: 0.3;
 $alpha-transparent: 0.5;
@@ -22,7 +24,7 @@ $rem-note: 0.85rem;
 $height-margin-document: (8rem * $line-height);
 $height-margin-section: (4rem * $line-height);
 $height-margin-part: (1rem * $line-height);
-$height-input: 2.4rem;
+$height-input: 2.4 * $input-font-size;
 
 $width-padding: (0.5rem * $line-height);
 $height-padding: (0.5rem * $line-height);
@@ -204,7 +206,7 @@ article {
     }
 }
 
-.cover, section, .afterword {
+.cover, section, .afterword, .section {
     overflow: hidden;
     width: 100%;
     > * {
@@ -361,7 +363,14 @@ div.title {
     }
 }
 
-.column-la h2, .column-a h2 {
+div.feature {
+    border: 1px solid #d0d0d0;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    padding: $height-padding $width-padding;
+}
+
+.column-la h2, .column-a h2, .column-la .en, .column-a .en {
     text-align: right;
 }
 
@@ -369,27 +378,65 @@ h2 {
     margin: 0 0 $height-margin-part;
     font-size: $rem-title-section;
     font-weight: normal;
-    &::after {
-        display: block;
-        width: 100%;
-        height: 0.25rem;
-        content: "";
-    }
     &.en, .en {
         font-family: 'Raleway', sans-serif;
     }
 }
-h2.yellow-colored::after {
-    background: #fff100;
+.en {
+    margin: 0 0 $height-margin-part;
+    font-size: $rem-title-section;
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
 }
-h2.red-colored::after {
+
+.red-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
     background: #e5004f;
 }
-h2.blue-colored::after {
+.orange-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
+    background: #f39800;
+}
+.yellow-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
+    background: #fff100;
+}
+.green-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
+    background: #009944;
+}
+.cyan-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
+    background: #00a0e9;
+}
+.blue-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
     background: #0068b7;
 }
-h2.cyan-colored::after {
-    background: #00a0e9;
+.purple-colored::after {
+    display: block;
+    width: 100%;
+    height: 0.25rem;
+    content: "";
+    background: #920783;
 }
 
 .cover.s-about-cover {
@@ -432,17 +479,131 @@ h2.cyan-colored::after {
     background-image: url(/assets/img/scotland-2658392_1920.jpg);
     color: $color-black;
 }
+.cover.s-it-support-cover {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: $color-white;
+    background-image: url(/assets/img/map-3491355_1920.jpg);
+}
+.cover.s-contact-cover {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: $color-white;
+    background-image: url(/assets/img/railroad-tracks-480466_1920.jpg);
+}
+.cover.s-it-success-cover {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: $color-white;
+    background-image: url(/assets/img/curve-1209392_1920.jpg);
+}
 
+form {
+    margin: 0;
+    padding: 0;
+}
+.field {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow: hidden;
+    @include for-tablet-up() {
+        flex-flow: nowrap;
+    }
+    & > label[for] {
+        width: 100%;
+        height: $height-input;
+        line-height: $height-input;
+        @include for-tablet-up() {
+            width: 14rem;
+            flex: 0 0 auto;
+        }
+    }
+    &.required > label[for]::after {
+        display: inline-block;
+        padding-left: $width-padding;
+        content: "[必須]";
+        font-size: $rem-note;
+        color: red;
+    }
+    .control {
+        width: 100%;
+        display: block;
+        margin-bottom: $height-margin-part;
+        @include for-tablet-up() {
+            flex: 1 1 auto;
+        }
+        & > label.error {
+            color: red;
+            font-size: $rem-note;
+            line-height: 1;
+        }
+    }
+}
+.form-action {
+    @include for-tablet-up() {
+        margin-left: 14rem;
+    }
+}
 
-a.button {
+input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $input-font-size;
+    height: $height-input;
+    line-height: $height-input;
+    padding: 0 $width-padding;
+    border: 1px solid $color-border;
+    outline: none;
+    &.error:not(:focus) {
+        border: 1px solid $color-border-poor;
+    }
+}
+select {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $input-font-size;
+    height: $height-input;
+    line-height: $height-input;
+    padding: 0 $width-padding;
+    border: 1px solid $color-border;
+    outline: none;
+    &.error:not(:focus) {
+        border: 1px solid $color-border-poor;
+    }
+}
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $input-font-size;
+    height: 10 * $height-input;
+    line-height: $line-height;
+    padding: $height-padding $width-padding;
+    border: 1px solid $color-border;
+    outline: none;
+    &.error:not(:focus) {
+        border: 1px solid $color-border-poor;
+    }
+}
+::placeholder {
+    color: #bbb;
+}
+
+a.button, button.button {
     display: inline-block;
     text-decoration: none;
     background: $color-gray;
+    border: none;
     height: $height-input;
     line-height: $height-input;
     padding: 0 $width-button-padding;
     color: $color-white;
     position: relative;
+    box-sizing: border-box;
     &:hover {
         background: rgba($color-gray, 1 - $alpha-hover);
     }
@@ -450,6 +611,25 @@ a.button {
         line-height: $height-input;
         height: $height-input;
         vertical-align: middle;
+    }
+}
+
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    td {
+        border-top: 1px solid #d0d0d0;
+        box-sizing: border-box;
+        padding: calc(#{$height-padding} - 1px) $width-padding $height-padding;
+        &.head {
+            background-color: #f0f0f0;
+        }
+        &.nowrap {
+            white-space: nowrap;
+        }
+        &.right-aligned {
+            text-align: right;
+        }
     }
 }
 
@@ -541,9 +721,87 @@ em {
     font-style: normal;
     font-weight: normal;
     font-size: 1.2rem;
+    color: $color-gray;
 }
 strong {
     font-style: normal;
-    display: inline-block;
-    border-bottom: 1px dashed $color-black;
+    text-decoration: underline dotted $color-gray;
+}
+
+.spinner {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color-white, $alpha-transparent);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 200;
+    &.hidden {
+        pointer-events: none;
+        opacity: 0;
+    }
+    &::after {
+        display: block;
+        position: absolute;
+        content: url(/assets/img/spinner.gif);
+        top: calc(50% - 55px);
+        left: calc(50% - 55px);
+    }
+}
+
+.notification {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    max-width: 100%;
+    width:100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 0;
+    transition: transform 0.2s ease-out;
+    background-color: #f0f0f0;
+    color: $color-black;
+    box-sizing: border-box;
+    padding: (2 * $height-padding) (1.5rem + $width-padding) (2 * $height-padding) (2.5rem + 2 * $width-padding);
+    @include shadow1();
+    @include for-tablet-up() {
+        width: auto;
+    }
+    &.hidden {
+        transform: translate(-50%, 100%);
+    }
+    &.success::before {
+        @include icon();
+        display: inline-block;
+        position: absolute;
+        left: $width-padding;
+        top: 0;
+        bottom: 0;
+        font-size: 2.5rem;
+        line-height: 2.5rem * $line-height;
+        vertical-align: middle;
+        content: "\e5ca";
+        color: #56cd6a;
+    }
+    &.failure::before {
+        @include icon();
+        display: inline-block;
+        position: absolute;
+        left: $width-padding;
+        top: 0;
+        bottom: 0;
+        font-size: 2.5rem;
+        line-height: 2.5rem * $line-height;
+        vertical-align: middle;
+        content: "\e001";
+        color: $color-border-poor;
+    }
+    .notification-close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }

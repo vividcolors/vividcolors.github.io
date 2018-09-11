@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "clean": "yarn run rimraf *.html assets",
-    "cp": "yarn run cpx 'src/**/*.{js,png,jpg,svg,pdf,pm4}' assets ", 
+    "cp": "yarn run cpx 'src/**/*.{js,png,jpg,svg,pdf,pm4,gif}' assets ", 
     "ejs": "yarn run ejs-cli --base-dir src/ejs/ '/**/**.ejs' --out ./", 
     "css": "yarn run sass && yarn run autoprefixer", 
     "sass": "yarn run node-sass src/scss/style.scss assets/css/style.css --output-style compressed --source-map assets/css/",
