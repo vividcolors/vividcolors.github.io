@@ -8,7 +8,9 @@ function send(id, pw, data, k) {
         port: 587, 
         auth: {user: id, pass: pw}, 
         authMethod: 'CRAM-MD5', 
-        secure: false
+        secure: false, 
+        debug: true, 
+        connectionTimeout: 10000
     });
     client.sendMail({
         from: 'ビビッドカラーズ株式会社 <info@vividcolors.co.jp>', 
@@ -58,9 +60,11 @@ function cookBody(map) {
 
 exports.postMail = (req, res) => {
     if (req.method === 'OPTIONS') {
-	    res.set('Access-Control-Allow-Origin', 'www.vividcolors.co.jp')
-	       .set('Access-Control-Allow-Methods', 'POST')
-	       .status(200);
+	    res.set('Access-Control-Allow-Origin', 'https://www.vividcolors.co.jp')
+           .set('Access-Control-Allow-Methods', 'POST')
+           .set('Access-Control-Allow-Headers', 'Content-Type')
+           .status(200)
+           .end();
 	    return;
     }
 

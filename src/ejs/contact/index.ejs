@@ -106,7 +106,7 @@
             content: document.getElementById('content').value
           };
           $.ajax({
-            data: data, 
+            data: JSON.stringify(data), 
             url: "https://us-central1-coporate-functions.cloudfunctions.net/postMail", 
             method: "POST", 
             contentType: "application/json", 
