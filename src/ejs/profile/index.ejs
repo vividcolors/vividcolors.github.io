@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:og="http://ogp.me/ns#">
 <head>
-  <%- include('../../ejsinc/head') %>
-  <title>会社紹介 | ビビッドカラーズ</title>
+  <%- include('../../ejsinc/head', {title:'会社紹介'}) %>
   <meta name="robots" content="noindex">
 </head>
 <body>
@@ -13,18 +12,17 @@
         <div class="column-l"></div>
         <div class="column-abc">
           <div class="title">
-            <h1><span class="en">PROFILE</span> 会社紹介</h1>
+            <h1><span class="en">PROFILE</span><span class="ja">会社紹介</span></h1>
           </div>
         </div>
       </div>
     </div>
     <section>
-      <div class="columns">
-        <div class="column-la">
-          <img src="/assets/img/ceo.jpg" alt="代表" style="max-width:100%;" />
-        </div>
-        <div class="column-bc">
-          <h2 class="blue-colored">代表者略歴</h2>
+      <h2><span class="ja">代表者略歴</span><span class="en blue-colored">President</span></h2>
+        <div class="with-float">
+          <div class="float-left">
+            <img src="/assets/img/ceo.jpg" alt="代表" style="max-width:100%;" />
+          </div>
           <p><span class="name"></span> 1976年生まれ千葉育ち。<br />
           大学在籍時からプログラミングを始め、社会人になってからも一貫してプログラマー。<br />
           2009年には、独立開業しオンラインゲームを開発・運営。
@@ -32,13 +30,10 @@
           2018年、ビビッドカラーズを創業。
           1児の父。</p>
         </div>
-      </div>
     </section>
     <section>
-      <div class="columns">
-        <div class="column-l"></div>
-        <div class="column-abc">
-          <h2 class="blue-colored">会社概要</h2>
+        <h2><span class="ja">会社概要</span><span class="en blue-colored">Outline</span></h2>
+        <div>
           <dl class="dl-large">
             <dt>会社名</dt>
             <dd>ビビッドカラーズ株式会社</dd>
@@ -58,18 +53,14 @@
             <dd>info@vividcolors.co.jp</dd>
           </dl>
         </div>
-      </div>
     </section>
     <section>
-      <div class="columns">
-        <div class="column-l"></div>
-        <div class="column-abc">
-          <h2 class="blue-colored">アクセス</h2>
+        <h2><span class="ja">アクセス</span><span class="en blue-colored">Access</span></h2>
+        <div>
           <p>JR京葉線海浜幕張駅 徒歩3分。<br />
           駅前の幕張テクノガーデンのCB棟3階です。</p>
           <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3242.0400578085755!2d140.03942426455697!3d35.65138468921709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5Lit54CsMS0zIOW5leW8teODhuOCr-ODjuOCrOODvOODh-ODsw!5e0!3m2!1sja!2sjp!4v1530064058353" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-      </div>
     </section>
   </article>
   <%- include('../../ejsinc/footer') %>

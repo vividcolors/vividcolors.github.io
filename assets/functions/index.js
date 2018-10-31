@@ -74,9 +74,12 @@ exports.postMail = (req, res) => {
     send(process.env.SMTP_USER, process.env.SMTP_PASSWORD, data, function (err) {
         if (err) {
             console.log(err);
-            res.status(500).send('NG');
+            res.set('Access-Control-Allow-Origin', 'https://www.vividcolors.co.jp')
+               .status(500)
+               .send('NG');
         } else {
-            res.send('OK');
+            res.set('Access-Control-Allow-Origin', 'https://www.vividcolors.co.jp')
+               .send('OK');
         }
     });
 }
