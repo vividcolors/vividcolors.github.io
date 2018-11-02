@@ -19,7 +19,7 @@
     <section>
       <div>
           <p>下記フォームにてお問い合わせください。<br />
-          フォームで不都合がおありの場合は、お手数ですが<a href="mailto:info@vividcolors.co.jp">info@vividcolors.co.jp</a>に直接メールをお送りいただくか、お電話（<a href="tel:05052132482">050-5213-2482</a>）にてご連絡ください。</p>
+          フォームで不都合がおありの場合は、お手数ですが<a href="mailto:info@vividcolors.co.jp" onclick="gtag('event', 'click', {event_category:'contact', event_label:'mail'});">info@vividcolors.co.jp</a>に直接メールをお送りいただくか、お電話（<a href="tel:05052132482" onclick="gtag('event', 'click', {event_category:'contact', event_label:'tel'});">050-5213-2482</a>）にてご連絡ください。</p>
           <form id="theForm" method="POST" action="">
             <div class="field required">
               <label for="name">お名前</label>
@@ -107,6 +107,7 @@
             success: function () {
               $('#spinner').addClass('hidden');
               $('#sendSuccess').removeClass('hidden');
+              gtag('event', 'submit', {event_category:'contact', event_label:'form'});
             }, 
             error: function () {
               $('#spinner').addClass('hidden');
