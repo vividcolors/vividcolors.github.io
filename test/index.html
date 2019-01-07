@@ -11,7 +11,7 @@
 <body>
     <h1>QRコード読み取りデモ2</h1>
     <div style="text-align: center;">
-        <video id="video" style="width: 80%; height: auto;" autoplay playsinline></video>
+        <video id="video" style="width: 10vw; height: auto;" autoplay playsinline></video>
     </div>
     <img id="img" />
     <div style="display: none;">
@@ -126,7 +126,7 @@ function decode() {
 }
 
 function startReadQR() {
-    setInterval('decode()', 500);
+    setInterval('decode()', 300);
 }
 
 function changeCamera(index) {
