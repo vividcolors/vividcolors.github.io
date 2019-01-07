@@ -10,7 +10,7 @@
 
 <body>
     <h1>QRコード読み取りデモ2</h1>
-    <div style="transform:scale(0.1, 0.1);">
+    <div style="position:relative;">
         <video id="video" style="width: 80%; height: auto;" autoplay playsinline></video>
     </div>
     <img id="img" />
@@ -30,24 +30,6 @@
 </body>
 
 
-<script type="text/javascript" src="qr/grid.js"></script>
-<script type="text/javascript" src="qr/version.js"></script>
-<script type="text/javascript" src="qr/detector.js"></script>
-<script type="text/javascript" src="qr/formatinf.js"></script>
-<script type="text/javascript" src="qr/errorlevel.js"></script>
-<script type="text/javascript" src="qr/bitmat.js"></script>
-<script type="text/javascript" src="qr/datablock.js"></script>
-<script type="text/javascript" src="qr/bmparser.js"></script>
-<script type="text/javascript" src="qr/datamask.js"></script>
-<script type="text/javascript" src="qr/rsdecoder.js"></script>
-<script type="text/javascript" src="qr/gf256poly.js"></script>
-<script type="text/javascript" src="qr/gf256.js"></script>
-<script type="text/javascript" src="qr/decoder.js"></script>
-<script type="text/javascript" src="qr/qrcode.js"></script>
-<script type="text/javascript" src="qr/findpat.js"></script>
-<script type="text/javascript" src="qr/alignpat.js"></script>
-<script type="text/javascript" src="qr/databr.js"></script>
-<script src="index.js"></script>
 <script type="text/javascript">
 if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     alert('このブラウザーは非対応です');
@@ -88,9 +70,8 @@ navigator.mediaDevices.enumerateDevices()
 var video = document.getElementById('video');
 var localStream = null;
 
-function decodeImageFromBase64(data, callback) {
-    qrcode.callback = callback;
-    qrcode.decode(data);
+function decodeImageFromBase64(data, w, h, callback) {
+    var code = jsQR(data, w, h, {})
 }
 
 document.getElementById('changeCamera').addEventListener('click', function () {
@@ -115,13 +96,14 @@ function decode() {
         canvas.setAttribute('width', w);
         canvas.setAttribute('height', h);
         ctx.drawImage(video, 0, 0, w, h);
-
-        decodeImageFromBase64(canvas.toDataURL('image/png'), function (decodeInformation) {
-            var input = document.getElementById('qr');
-            if (!(decodeInformation instanceof Error)) {
-                input.value = decodeInformation;
-            }
+        var imageData = ctx.getImageData(0, 0, w, h);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
         });
+
+        if (code) {
+            document.getElementById('qr').value = code.data;
+        }
     }
 }
 
